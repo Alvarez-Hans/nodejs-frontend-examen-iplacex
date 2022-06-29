@@ -1,0 +1,39 @@
+<h1>Listado de usuarios</h1>
+<br>
+<div class="container">
+  <div class="row">
+    <h3>Listado de Usuarios</h3>
+  </div>
+  <div class="row">
+    <div class="col">
+      <a class="btn btn-primary" href="/user/create">
+        Nuevo
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <table class="table table-striped mt-2">
+        <thead class="table-primary">
+          <tr>
+            <th class="col">Nombre</th>
+            <th class="col">Usuario</th>
+            <th class="col" colspan="2">Operacion</th>
+          </tr>
+        </thead>
+        <tbody class="table-group-divider">
+          {{#each _usuarios}}
+          {{!-- data --}}
+          <tr>
+            <td>{{nombre}}</td>
+            <td>{{usuario}}</td>
+            <td><a href="/user/update/{{id}}">Modificar</a></td>
+            <td><a href="/user/delete/{{id}}">Eliminar</a></td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
