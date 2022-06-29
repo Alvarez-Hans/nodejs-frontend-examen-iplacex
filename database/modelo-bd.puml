@@ -1,0 +1,59 @@
+@startuml Modelos-Dark
+  hide circle
+
+  entity "Usuarios" as usuarios {
+    * id
+    --
+    * nombre
+    * usuario
+    * password
+  }
+
+  entity "Listado_Compras" as compras {
+    * id
+    --
+    * id_usuario
+    * id_producto
+    id_tienda
+    notas
+  }
+
+  entity "nav_compra_producto"  as nav_cp {
+    * id_compra
+    * id Producto
+    --
+    costo_presupuesto
+    costo_real
+    comprado  
+  }  
+
+  entity "Productos" as productos {
+    * id
+    --
+    * nombre
+  }
+
+  entity "Tienda" as tiendas {
+    * id
+    --
+    nombre
+    nombre_sucursal
+    direccion
+    cuidad 
+    region
+    validado 
+  }
+
+  ' -------------------------------------------
+
+  compras }|-- usuarios
+
+  
+  nav_cp }|-- compras
+  nav_cp }|-- productos
+
+  compras }|-- tiendas
+
+
+@enduml
+
