@@ -65,7 +65,7 @@ router.get('/delete/:id', async function(req, res, next) {
   const _usuario = await usuarios.findByPk( id );
   try {
     await _usuario.destroy();
-    console.debug('Usuario actualizado sin problemas.', { _usuario });
+    console.debug('Usuario eliminado sin problemas.', { _usuario });
     res.redirect('/users');
   } catch (error) {
     // TODO: Pendiente de generar error

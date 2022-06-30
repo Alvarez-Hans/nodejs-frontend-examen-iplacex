@@ -7,8 +7,7 @@ const { sequelize, usuarios } = require('../models');
 router.get('/', async function(req, res, next) {
   const _usuarios = await usuarios.findAll();
   console.debug('get usuarios', {_usuarios});
-  res.render('usuarios/usuarios', { _usuarios });
-  // res.render('usuarios/usuarios')
+  res.render('usuarios/index', { _usuarios });
 });
 
 

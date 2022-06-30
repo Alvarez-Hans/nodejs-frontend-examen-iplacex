@@ -9,15 +9,15 @@
           <form action="/user/update/{{_usuario.id}}" method="POST">
             <div class="form-group">
               <label class=""  for="nombre">Nombre:</label>
-              <input type="text" name="nombre" value="{{_usuario.nombre}}" placeholder="Ingrese su Nombre..." class="form-control">
+              <input type="text" name="nombre" value="{{_usuario.nombre}}" placeholder="Ingrese su Nombre..." class="form-control" required>
             </div>
             <div class="form-group">
               <label class=""  for="usuario">Usuarios:</label>
-              <input type="text" name="usuario" value="{{_usuario.usuario}}" placeholder="Ingrese Usuario..." class="form-control">
+              <input type="text" name="usuario" value="{{_usuario.usuario}}" placeholder="Ingrese Usuario..." class="form-control" required> 
             </div>
             <div class="form-group">
               <label class=""  for="password">Password:</label>
-              <input type="password" name="password" value="{{_usuario.password}}" placeholder="Ingrese Password..." class="form-control">
+              <input type="password" name="password" value="{{_usuario.password}}" placeholder="Ingrese Password..." class="form-control" required>
             </div>
             <div class="form-group ">
               <button class="btn btn-success">Guardar</button>
