@@ -13,9 +13,10 @@ router.post('/create', async (req, res, next) => {
 
   const { nombre, nombre_sucursal, direccion, cuidad, region } = req.body;
   const validado = false; //la validacion de una tienda nace en falso
+  const id_usuario = req.user.id;
 
   try {
-    const _tienda = await tiendas.create({ nombre, nombre_sucursal, direccion, cuidad, region, validado });
+    const _tienda = await tiendas.create({ nombre, nombre_sucursal, direccion, cuidad, region, validado, id_usuario });
     console.debug('Tienda creada sin problemas.', { _tienda });
     res.redirect('/tiendas');
   } catch (error) {

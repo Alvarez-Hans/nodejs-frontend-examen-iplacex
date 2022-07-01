@@ -14,12 +14,13 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   tiendas.init({
+    id_usuario: DataTypes.INTEGER,
     nombre: DataTypes.STRING,
     nombre_sucursal: DataTypes.STRING,
     direccion: DataTypes.STRING,
     cuidad: DataTypes.STRING,
     region: DataTypes.STRING,
-    validado: DataTypes.BOOLEAN
+    validado: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'tiendas',
