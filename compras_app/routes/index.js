@@ -4,7 +4,8 @@ const router = express.Router();
 
 router.get('/', async (req, res) => {
     if (req.isAuthenticated()) {
-        res.render('index');
+        // res.render('index');
+        res.redirect('/listas');
     } else {
         res.redirect('/login');
     }    

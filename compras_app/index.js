@@ -30,6 +30,7 @@ app.engine('.hbs', exphbs({
 }))
 app.set('view engine', '.hbs');
 
+
 // Middlewares
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -63,13 +64,15 @@ app.use('/usuario', require('./routes/user'));
 app.use('/tiendas', require('./routes/tiendas'));
 app.use('/tienda', require('./routes/tienda')); 
 app.use('/listas', require('./routes/listas')); 
+app.use('/lista', require('./routes/lista')); 
+app.use('/producto', require('./routes/producto')); 
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Starting
 app.listen(app.get('port'), () => {
-  console.log('Server is in port', app.get('port'));
+  console.log('Server is in port http://localhost:'+app.get('port'));
 });
 
 // Sincronizacion de los tablas del proyecto

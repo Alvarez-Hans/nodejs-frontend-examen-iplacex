@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 // --
 const { sequelize, usuarios } = require('../models');
+const { isLoggedIn } = require('../lib/auth');
 
 /* CREATE functions. */
-router.get('/create', async function(req, res, next) {
+router.get('/create', isLoggedIn, async function(req, res, next) {
   res.render('usuario/create')
 });
 
-router.post('/create', async (req, res, next) => {
+router.post('/create', isLoggedIn, async (req, res, next) => {
     console.log(req.body);
 
     const { nombre, usuario, password } = req.body;
@@ -24,7 +25,7 @@ router.post('/create', async (req, res, next) => {
   });
 
 /* UPDATE functions. */
-router.get('/update/:id', async function(req, res, next) {
+router.get('/update/:id', isLoggedIn, async function(req, res, next) {
   console.log(req.params);
 
   const { id } = req.params;
@@ -34,7 +35,7 @@ router.get('/update/:id', async function(req, res, next) {
 });
 
 
-router.post('/update/:id', async function(req, res, next) {
+router.post('/update/:id', isLoggedIn, async function(req, res, next) {
   console.log('req.params', req.params);
   console.log('req.body', req.body);
 
@@ -57,7 +58,7 @@ router.post('/update/:id', async function(req, res, next) {
 });
 
 /* DELETE functions. */
-router.get('/delete/:id', async function(req, res, next) {
+router.get('/delete/:id', isLoggedIn, async function(req, res, next) {
   console.log(req.params);
 
   const { id } = req.params;
