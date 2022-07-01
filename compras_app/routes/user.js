@@ -16,7 +16,7 @@ router.post('/create', async (req, res, next) => {
     try {
       const _usuario = await usuarios.create({ nombre, usuario, password });
       console.debug('Usuario creado sin problemas.', { _usuario });
-      res.redirect('/users');
+      res.redirect('/usuarios');
     } catch (error) {
       // TODO: Pendiente de generar error
       console.error({ error });
@@ -49,7 +49,7 @@ router.post('/update/:id', async function(req, res, next) {
   try {
     await _usuario.save();
     console.debug('Usuario actualizado sin problemas.', { _usuario });
-    res.redirect('/users');
+    res.redirect('/usuarios');
   } catch (error) {
     // TODO: Pendiente de generar error
     console.error({ error });
@@ -66,7 +66,7 @@ router.get('/delete/:id', async function(req, res, next) {
   try {
     await _usuario.destroy();
     console.debug('Usuario eliminado sin problemas.', { _usuario });
-    res.redirect('/users');
+    res.redirect('/usuarios');
   } catch (error) {
     // TODO: Pendiente de generar error
     console.error({ error });

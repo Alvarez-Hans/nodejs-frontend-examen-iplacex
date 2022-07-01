@@ -1,9 +1,13 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+// const { isLoggedIn } = require('../lib/auth');
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async (req, res) => {
+    if (req.isAuthenticated()) {
+        res.render('index');
+    } else {
+        res.redirect('/login');
+    }    
 });
 
 module.exports = router;

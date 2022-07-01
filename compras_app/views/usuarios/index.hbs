@@ -1,41 +1,46 @@
-<div class="container">
-  <div class="row">
-    <h3>Mantenedor de Usuarios</h3>
-  </div>
-  <div class="row mt-2">
-    <div class="col">
-      <a class="btn btn-primary" href="/user/create">
-        Nuevo
-      </a>
+<div class="container listData">
+  <div class="card">
+    <div class="card-header">
+      <h3>Mantenedor de Usuarios</h3>
     </div>
-  </div>
-  <div class="row">
-    <div class="col table-responsive text-nowrap">
-      <table class="table table-striped table-hover table-sm mt-2 w-auto">
-        <thead class="table-primary">
-          <tr>
-            <th class="col th-sm col-sm-auto">Nombre</th>
-            <th class="col th-sm col-sm-auto">Usuario</th>
-            <th class="col th-sm col-sm-3" colspan="2"></th>
-          </tr>
-        </thead>
-        <tbody class="table-group-divider">
-          {{#each _usuarios}}
-          {{!-- data --}}
-          <tr>
-            <th scope="row">{{nombre}}</td>
-            <td>{{usuario}}</td>
-            <td><a class="btn btn-secondary" href="/user/update/{{id}}">Modificar</a></td>
-            <td><a class="btn btn-danger" href="/user/delete/{{id}}">Eliminar</a></td>
-          </tr>
-          {{else}}
-          <tr>
-              <td scope="row" colspan="4" class="table-warning">No existen Usuarios creados, por favor, precionar "Nuevo" para crear uno.</td>
-          </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    </div>
-  </div>
+    <div class="card-body">
 
+      <div class="row">
+        <div class="col">
+          <a class="btn btn-primary" href="/usuario/create">
+            Nuevo
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col table-responsive text-nowrap">
+          <table class="table table-striped table-hover table-sm mt-2 w-auto">
+            <thead class="table-primary">
+              <tr>
+                <th class="col th-sm col-sm-auto">Nombre</th>
+                <th class="col th-sm col-sm-auto">Usuario</th>
+                <th class="col th-sm col-sm-3" colspan="2"></th>
+              </tr>
+            </thead>
+            <tbody class="table-group-divider">
+              {{#each _usuarios}}
+              <tr>
+                <th scope="row">{{nombre}}</td>
+                <td>{{usuario}}</td>
+                <td><a class="btn btn-secondary" href="/usuario/update/{{id}}">Modificar</a></td>
+                <td><a class="btn btn-danger" href="/usuario/delete/{{id}}">Eliminar</a></td>
+              </tr>
+              {{else}}
+              <tr>
+                <td scope="row" colspan="4" class="table-warning">No existen Usuarios creados, por favor, precionar
+                  "Nuevo" para crear uno.</td>
+              </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>

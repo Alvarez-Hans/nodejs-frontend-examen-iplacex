@@ -13,18 +13,18 @@
     * id
     --
     * id_usuario
-    * id_producto
+    * producto
     id_tienda
     notas
+    costo_presupuesto
+    costo_real
+    comprado  
   }
 
   entity "nav_compra_producto"  as nav_cp {
     * id_compra
     * id Producto
     --
-    costo_presupuesto
-    costo_real
-    comprado  
   }  
 
   entity "Productos" as productos {
