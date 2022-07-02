@@ -3,16 +3,33 @@
     <div class="col-ms-8  mx-auto">
       <div class="card">
         <div class="card-header">
-          <h3>Registre un nuevo Producto</h3>
+          <h3>
+            {{#if _lista_detalle.id}} Actualice el Producto
+            {{else}}Registre un nuevo Producto
+            {{/if}}
+          </h3>
         </div>
         <div class="card-body">
-          <form action="/producto/update/{{_lista_detalle.id}}" method="POST" class="was-validated">
+          {{#if errors}}
+          <div class="h-auto block errorMensaje">
+            {{#each errors}}
+            <div class="alert alert-danger alert-dismissible fade show text-center " role="alert">
+              <p class="">{{msg}}</p>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {{/each}}
+          </div>
+          {{/if}}
+
+          <form action={{#if _lista_detalle.id}}"/producto/update/{{_lista_detalle.id}}"
+                       {{else}}"/producto/create/{{id_lista}}" 
+                       {{/if}} method="POST" class="was-validated">
             <div class="form-group">
               <label class="" for="Producto">Producto:</label>
-              <input type="text" name="producto" placeholder="Ingrese producto..." class="form-control" required autofocus value="{{_lista_detalle.producto}}">
-              {{!-- <div class="invalid-tooltip">
-                Por favor, ingrese el producto.
-              </div> --}}
+              <input type="text" name="producto" placeholder="Ingrese producto..." class="form-control" required
+                autofocus value="{{_lista_detalle.producto}}">
             </div>
             <div class="form-group">
               <label class="" for="costo_presupuesto">Monto estimado:</label>
@@ -28,14 +45,17 @@
                 {{/each}}
               </select>
             </div>
+            {{#if _lista_detalle.id}}
             <div class="form-group">
               <label class="" for="comprado">Esta comprado?:</label>
               <input type="checkbox" name="comprado" {{#if _lista_detalle.comprado}}checked{{/if}}>
             </div>
             <div class="form-group">
               <label class="" for="costo_real">Monto Real:</label>
-              <input type="number" name="costo_real" placeholder="Ingrese monto real..." class="form-control" value="{{_lista_detalle.costo_real}}">
+              <input type="number" name="costo_real" placeholder="Ingrese monto real..." class="form-control"
+                value="{{_lista_detalle.costo_real}}">
             </div>
+            {{/if}}
             <div class="form-group">
               <label class="" for="notas">Notas:</label>
               <textarea name="notas" rows="2" class="form-control" placeholder="Ingrese alguna nota...">
@@ -44,7 +64,9 @@
             </div>
             <div class="form-group ">
               <button class="btn btn-success">Guardar</button>
-              <a href="/lista/update/{{_lista_detalle.id_lista}}" class="btn btn-danger">Cancelar</a>
+              <a href={{#if _lista_detalle.id}}"/lista/update/{{_lista_detalle.id_lista}}" 
+                      {{else}}"/lista/update/{{id_lista}}" 
+                      {{/if}}class="btn btn-danger">Cancelar</a>
             </div>
           </form>
         </div>

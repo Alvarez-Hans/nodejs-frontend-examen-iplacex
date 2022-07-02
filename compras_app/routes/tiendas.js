@@ -9,7 +9,7 @@ const { sequelize, tiendas } = require('../models');
 /* GET users listing. */
 router.get('/', isLoggedIn,async function(req, res, next) {
   const _tiendas = await tiendas.findAll();
-  console.debug('get tiendas', {_tiendas: _tiendas });
+  //console.debug('get tiendas', {_tiendas: _tiendas });
   res.render('tiendas/index', { _tiendas: _tiendas });
 });
 

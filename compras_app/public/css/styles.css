@@ -51,3 +51,8 @@ body {
   .loginRegistrar {
     font-size: 0.7rem;
   }
+
+  .errorMensaje p, span {
+    margin-bottom: 0px;
+    margin-top: 0px;
+  }
