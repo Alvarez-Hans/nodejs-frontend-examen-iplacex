@@ -1,31 +1,30 @@
-<div class="container p-4 listData">
-  <div class="row">
-    <div class="col-ms-8  mx-auto">
-      <div class="card">
-        <div class="card-header">
-          <h3>Actualice Usuario</h3>
+<div class="container-fluid listData mx-auto">
+  <div class="card col-sm-12 col-md-10 col-lg-8 mx-auto">
+    <div class="card-header">
+      <h3>Actualice Usuario</h3>
+    </div>
+    <div class="card-body">
+      <form action="/usuario/update/{{_usuario.id}}" method="POST" class="was-validated">
+        <div class="form-group">
+          <label class="" for="nombre">Nombre:</label>
+          <input type="text" name="nombre" value="{{_usuario.nombre}}" placeholder="Ingrese su Nombre..."
+            class="form-control" required>
         </div>
-        <div class="card-body">
-          <form action="/usuario/update/{{_usuario.id}}" method="POST">
-            <div class="form-group">
-              <label class=""  for="nombre">Nombre:</label>
-              <input type="text" name="nombre" value="{{_usuario.nombre}}" placeholder="Ingrese su Nombre..." class="form-control" required>
-            </div>
-            <div class="form-group">
-              <label class=""  for="usuario">Usuarios:</label>
-              <input type="text" name="usuario" value="{{_usuario.usuario}}" placeholder="Ingrese Usuario..." class="form-control" required> 
-            </div>
-            <div class="form-group">
-              <label class=""  for="password">Password:</label>
-              <input type="password" name="password" value="{{_usuario.password}}" placeholder="Ingrese Password..." class="form-control" required>
-            </div>
-            <div class="form-group ">
-              <button class="btn btn-success">Guardar</button>
-              <a href="/usuarios" class="btn btn-danger">Cancelar</a>
-            </div>
-          </form>
+        <div class="form-group">
+          <label class="" for="usuario">Usuarios:</label>
+          <input type="text" name="usuario" value="{{_usuario.usuario}}" placeholder="Ingrese Usuario..."
+            class="form-control" required>
         </div>
-      </div>
+        <div class="form-group">
+          <label class="" for="password">Password:</label>
+          <input type="password" name="password" value="{{_usuario.password}}" placeholder="Ingrese Password..."
+            class="form-control" required>
+        </div>
+        <div class="form-group ">
+          <button class="btn btn-success">Guardar</button>
+          <a href="/usuarios" class="btn btn-danger">Cancelar</a>
+        </div>
+      </form>
     </div>
   </div>
 </div>

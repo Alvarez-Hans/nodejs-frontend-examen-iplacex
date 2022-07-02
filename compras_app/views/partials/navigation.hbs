@@ -9,6 +9,9 @@
     </a>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Inicio</a>
+        </li>
         {{#if user}}
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
@@ -18,12 +21,9 @@
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="/tiendas">Mantenedor</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="/tiendas/validars">Validar</a>
+            <a class="dropdown-item" href="/tiendas/validar">Validar</a>
           </div>
         </li>
-        {{!-- <li class="nav-item">
-          <a class="nav-link" href="/listas">Listas de Compras</a>
-        </li> --}}
         <li class="nav-item">
           <a class="nav-link" href="/usuarios">Usuarios</a>
         </li>

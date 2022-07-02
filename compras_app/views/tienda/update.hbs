@@ -1,15 +1,13 @@
 <div class="container p-4 listData">
-  <div class="row">
-    <div class="col-ms-8  mx-auto">
-      <div class="card">
+      <div class="card col-sm-10 col-lg-8 mx-auto">
         <div class="card-header">
-          <h3>Registre un nuevo Usuario</h3>
+          <h3>Actualice la Tienda</h3>
         </div>
         <div class="card-body">
-          <form action="/tienda/update/{{_tienda.id}}" method="POST">
+          <form action="/tienda/update/{{_tienda.id}}" method="POST" class="was-validated">
             <div class="form-group">
               <label class=""  for="nombre">Nombre:</label>
-              <input type="text" name="nombre" placeholder="Ingrese Nombre..." class="form-control" required value="{{_tienda.nombre}}">
+              <input type="text" name="nombre" placeholder="Ingrese Nombre..." class="form-control" required value="{{_tienda.nombre}}" autofocus>
             </div>
             <div class="form-group">
               <label class=""  for="nombre_sucursal">Nombre Sucursal:</label>
@@ -33,7 +31,6 @@
             </div>
           </form>
         </div>
-      </div>
-    </div>
+      
   </div>
 </div>

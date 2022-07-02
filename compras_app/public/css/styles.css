@@ -1,13 +1,8 @@
 body {
     background: #f5f6fa;
-font-family: 'Oswald', sans-serif;
-
-    overflow: hidden;
-}
-
-.index {
-    width: 100vw;
-    height: 100vh;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100vh; /*100%;*/
 }
 
 .navbar {
@@ -23,12 +18,13 @@ font-family: 'Oswald', sans-serif;
     min-height: 30rem;
     width: 100%;
     height: 100vh; /*100%;*/
-    padding-top: 8rem;
-    padding-bottom: 8rem;
+    padding-top: 1rem;
+    /* padding-bottom: 8rem; */
     background: url('/img/background.jpeg');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    /* overflow-y: auto; */
 }
 
 .masthead h1 {
@@ -37,17 +33,15 @@ font-family: 'Oswald', sans-serif;
     padding: 0;
   }
   
-  @media (min-width: 992px) {
-    .masthead {
-      height: 100vh;
-    }
-    .masthead h1 {
-      font-size: 5.5rem;
-    }
-  }
-
   .listData {
     color: black;  
+    width: 100vh;
+    justify-content: center;
+  }
+
+  .listSubData {
+    overflow-y: auto;
+    width: 100%;
   }
 
   .listData table {

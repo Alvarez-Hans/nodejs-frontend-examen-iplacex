@@ -1,67 +1,97 @@
-<div class="container p-4 listData">
-  <div class="row">
-    <div class="col-ms-10 mx-auto">
+<div class="container-fluid listData listSubData mx-auto">
+  <div class="card col-sm-12 col-md-10 mx-auto">
+    <div class="card-header">
+      <h3>Modificacion de Lista de compras</h3>
+    </div>
+    <div class="card-body">
+      <form action="/lista/update/{{_lista.id}}" method="POST">
+        <div class="form-group">
+          <label class="" for="nombre">Nombre:</label>
+          <input type="text" name="nombre" placeholder="Ingrese Nombre..." class="form-control" required
+            value="{{_lista.nombre}}">
+        </div>
+        <div class="form-group ">
+          <button class="btn btn-success">Guardar</button>
+          <a href="/listas" class="btn btn-danger">Cancelar</a>
+        </div>
+      </form>
       <div class="card">
         <div class="card-header">
-          <h3>Modificacion de Lista de compras</h3>
+          <p>Listado de Productos</p>
         </div>
-        <div class="card-body">
-          <form action="/lista/update/{{_lista.id}}" method="POST">
-            <div class="form-group">
-              <label class="" for="nombre">Nombre:</label>
-              <input type="text" name="nombre" placeholder="Ingrese Nombre..." class="form-control" required
-                value="{{_lista.nombre}}">
+        <div class="listSubData">
+          {{#if sobrepasaPresupuesto}}
+          <div class="block">
+            <div class="alert alert-danger alert-dismissible fade show text-center" role="alert">
+              <p>El presupuesto fue sobrepasado en <b>{{montoDiferencia}}</b></p>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="form-group ">
-              <button class="btn btn-success">Guardar</button>
-              <a href="/listas" class="btn btn-danger">Cancelar</a>
-            </div>
-          </form>
-          <div class="card">
-            <div class="card-header">
-              <p>Listado de Productos</p>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <a class="btn btn-primary" href="/producto/create/{{_lista.id}}">
-                    Nuevo
-                  </a>
-                </div>
+          </div>
+          {{/if}}
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <a class="btn btn-primary" href="/producto/create/{{_lista.id}}">
+                  Nuevo
+                </a>
               </div>
-              <div class="row">
-                <div class="col table-responsive text-nowrap">
-                  <table class="table table-striped table-hover table-sm mt-2 w-auto">
-                    <thead class="table-primary">
-                      <tr>
-                        <th class="col th-sm col-sm-auto">Producto</th>
-                        <th class="col th-sm col-sm-auto">Presupuestado</th>
-                        <th class="col th-sm col-sm-auto">Pagado</th>
-                        <th class="col th-sm col-sm-auto">Comprado?</th>
-                        <th class="col th-sm col-sm-3" colspan="2"></th>
-                      </tr>
-                    </thead>
-                    <tbody class="table-group-divider">
-                      {{#each _listas_detalle}}
-                      {{!-- data --}}
-                      <tr>
-                        <th scope="row">{{producto}}</td>
-                        <td class="text-right">{{costo_presupuesto}}</td>
-                        <td class="text-right">{{costo_real}}</td>
-                        <td class="text-center"><input type="checkbox" name="validado" {{#if comprado}}checked{{/if}} onclick="return false;"></td>
-                        <td><a class="btn btn-secondary" href="/producto/update/{{id}}">Modificar</a></td>
-                        <td><a class="btn btn-danger" href="/producto/delete/{{id}}">Eliminar</a></td>
-                      </tr>
-                      {{else}}
-                      <tr>
-                        <td scope="row" colspan="8" class="table-warning">
-                          No existen productos creados, por favor, precionar "Nuevo" para crear una.
-                        </td>
-                      </tr>
-                      {{/each}}
-                    </tbody>
-                  </table>
-                </div>
+            </div>
+            <div class="row">
+              <div class="col table-responsive text-nowrap">
+                <table class="table table-striped table-hover mt-2 w-auto mx-auto">
+                  <thead class="table-primary">
+                    <tr>
+                      <th class="col th-sm col-sm-auto">Producto</th>
+                      <th class="col th-sm col-sm-auto">Presupuestado</th>
+                      <th class="col th-sm col-sm-auto">Pagado</th>
+                      <th class="col th-sm col-sm-auto">Comprado?</th>
+                      <th class="col th-sm col-sm-3" colspan="2"></th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-group-divider">
+                    {{#each _listas_detalle}}
+                    {{!-- data --}}
+                    <tr>
+                      <th scope="row">{{producto}}</td>
+                      <td class="text-right">{{costo_presupuesto}}</td>
+                      <td class="text-right">{{costo_real}}</td>
+                      <td class="text-center"><input type="checkbox" name="validado" {{#if comprado}}checked{{/if}}
+                          onclick="return false;"></td>
+                      <td><a class="btn btn-secondary" href="/producto/update/{{id}}">Modificar</a></td>
+                      <td><a class="btn btn-danger" href="/producto/delete/{{id}}">Eliminar</a></td>
+                    </tr>
+                    {{else}}
+                    <tr>
+                      <td scope="row" colspan="8" class="table-warning">
+                        No existen productos creados, por favor, precionar "Nuevo" para crear una.
+                      </td>
+                    </tr>
+                    {{/each}}
+                    {{#if _listas_detalle}}
+                    <tr class="table-info">
+                      <th scope="row" class="text-right">Total</th>
+                      </td>
+                      <td class="text-right">{{totalPresupuesto}}</td>
+                      <td class="text-right">{{totalReal}}</td>
+                      <td colspan="3"></td>
+                    </tr>
+                    {{/if}}
+                    <tr class="table-info">
+                      <th scope="row" class="text-right">Productos</th>
+                      </td>
+                      <td class="text-right">{{cantidad}}</td>
+                      <td colspan="4"></td>
+                    </tr>
+                    <tr class="table-info">
+                      <th scope="row" class="text-right">Prod. Comprados</th>
+                      </td>
+                      <td class="text-right">{{cantidadComprados}}</td>
+                      <td colspan="4"></td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

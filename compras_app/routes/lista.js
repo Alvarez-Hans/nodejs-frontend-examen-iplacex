@@ -33,12 +33,32 @@ router.get('/update/:id', isLoggedIn, async function (req, res, next) {
   console.log(req.params);
 
   const { id } = req.params;
+  let totalPresupuesto = 0;
+  let totalReal = 0;
+  let sobrepasaPresupuesto = false;
+  let cantidadComprados = 0;
 
   const _lista = await listas.findByPk(id);
   const _listas_detalle = await listas_detalle.findAll({ where: { id_lista: id } })
-  console.debug({_listas_detalle});
+  console.debug({ _listas_detalle });
 
-  res.render('lista/update', { _lista, _listas_detalle });
+
+  _listas_detalle.forEach(lista => {
+    totalPresupuesto += lista.costo_presupuesto;
+    if (lista.comprado) {
+      //solo pueden ser considerado en el total real cuando este comprado
+      totalReal += lista.costo_real;
+      cantidadComprados ++;
+    }
+  });
+
+  // validacion de real > presupuesto
+  if (totalReal > totalPresupuesto) {
+    sobrepasaPresupuesto = true;
+  }
+
+  console.debug({sobrepasaPresupuesto, cantidadComprados});
+  res.render('lista/update', { _lista, _listas_detalle, sobrepasaPresupuesto, totalPresupuesto,  totalReal,  montoDiferencia: totalReal-totalPresupuesto, cantidad: _listas_detalle.length, cantidadComprados });
 });
 
 

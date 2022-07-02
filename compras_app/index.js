@@ -10,7 +10,6 @@ const MySQLStore = require('express-mysql-session')(session);
 const bodyParser = require('body-parser');
 //
 const { sequelize } = require('./models');
-const { database } = require('./keys');
 //
 
 
@@ -40,7 +39,6 @@ app.use(session({
   secret: 'compras_app',
   resave: false,
   saveUninitialized: false,
-  // store: new MySQLStore(database)
 }));
 app.use(flash());
 app.use(passport.initialize());
