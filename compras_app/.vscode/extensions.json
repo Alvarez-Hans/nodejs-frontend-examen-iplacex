@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "zaczero.bootstrap-v4-snippets",
+    "dbaeumer.vscode-eslint",
+    "yzhang.markdown-all-in-one",
+    "pkief.material-icon-theme",
+    "ms-vscode.notepadplusplus-keybindings",
+    "jebbs.plantuml"
+  ]
+}

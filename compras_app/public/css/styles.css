@@ -47,3 +47,7 @@ body {
   .listData table {
     background-color: white;
   }
+
+  .loginRegistrar {
+    font-size: 0.7rem;
+  }

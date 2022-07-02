@@ -5,11 +5,11 @@ const { sequelize, usuarios } = require('../models');
 const { isLoggedIn } = require('../lib/auth');
 
 /* CREATE functions. */
-router.get('/create', isLoggedIn, async function(req, res, next) {
+router.get('/create', async function(req, res, next) {
   res.render('usuario/create')
 });
 
-router.post('/create', isLoggedIn, async (req, res, next) => {
+router.post('/create', async (req, res, next) => {
     console.log(req.body);
 
     const { nombre, usuario, password } = req.body;

@@ -3,6 +3,8 @@ var router = express.Router();
 // --
 const { sequelize, tiendas } = require('../models');
 
+
+
 /* CREATE functions. */
 router.get('/create', async function (req, res, next) {
   res.render('tienda/create')
